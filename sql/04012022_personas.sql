@@ -1,0 +1,35 @@
+USE `{{{db_log}}}`;
+
+ALTER TABLE `personas` 
+ADD COLUMN `id_sigarhu` INT(11) UNSIGNED NULL DEFAULT NULL AFTER `id_persona`;
+
+USE `{{{db_app}}}`;
+
+ALTER TABLE `personas` 
+ADD COLUMN `id_sigarhu` INT(10) UNSIGNED NULL DEFAULT NULL AFTER `id`;
+
+
+DROP TRIGGER IF EXISTS `{{{db_app}}}`.`personas_tg_alta`;
+
+DELIMITER $$
+USE `{{{db_app}}}`$$
+CREATE DEFINER=`{{{user_mysql}}}`@`%` TRIGGER `personas_tg_alta` AFTER INSERT ON `personas` FOR EACH ROW
+BEGIN
+INSERT INTO `{{{db_log}}}`.personas(`id_usuario`,`fecha_operacion`,`tipo_operacion`,`id_persona`,`id_sigarhu`,`cuit`,`apellido_nombre`,`apto`,`fecha_nacimiento`,`grupo_sanguineo`,`modalidad_vinculacion`,`fecha_apto`,`borrado`)
+VALUES (@id_usuario,CURRENT_TIMESTAMP(),"A",NEW.id,NEW.id_sigarhu,NEW.cuit,NEW.apellido_nombre,NEW.apto,NEW.fecha_nacimiento,NEW.grupo_sanguineo,NEW.modalidad_vinculacion,NEW.fecha_apto,NEW.borrado);
+END$$
+DELIMITER ;
+
+DROP TRIGGER IF EXISTS `{{{db_app}}}`.`personas_tg_modificacion`;
+
+DELIMITER $$
+USE `{{{db_app}}}`$$
+CREATE DEFINER=`{{{user_mysql}}}`@`%` TRIGGER `personas_tg_modificacion` AFTER UPDATE ON `personas` FOR EACH ROW
+BEGIN
+INSERT INTO `{{{db_log}}}`.personas(`id_usuario`,`fecha_operacion`,`tipo_operacion`,`id_persona`,`id_sigarhu`,`cuit`,`apellido_nombre`,`apto`,`fecha_nacimiento`,`grupo_sanguineo`,`modalidad_vinculacion`,`fecha_apto`,`borrado`)
+VALUES (@id_usuario,CURRENT_TIMESTAMP(),IF(NEW.borrado = 1, "B", "M"),OLD.id, NEW.id_sigarhu, NEW.cuit,NEW.apellido_nombre,NEW.apto,NEW.fecha_nacimiento,NEW.grupo_sanguineo,NEW.modalidad_vinculacion,NEW.fecha_apto,NEW.borrado);
+END$$
+DELIMITER ;
+
+
+

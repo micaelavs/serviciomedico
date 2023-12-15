@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+  	<head>
+	    <meta charset="utf-8">
+		<style>
+			@page {
+				size: 32mm 64mm; 
+				margin: 0mm 0mm;
+			}
+			*,
+			*:after,
+			*:before {
+			  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			  font-size: 50pt;
+			  margin: 0 0 0 0;
+			  padding: 0 0 0 0;
+			  margin-top: 0;
+			  margin-left: 0;
+			  margin-right: 0;
+			  margin-bottom: 0;
+			  padding-top: 0;
+			  padding-left: 0;
+			  padding-right: 0;
+			  padding-bottom: 0;
+			  border-collapse: collapse;
+			  box-sizing: content-box;
+			  text-align: left;
+			  font-size: 2mm;
+			}
+			body {
+			width: 32mm;
+			height: 64mm;
+			color: #001028;
+			background: #FFFFFF; 
+			font-family: Arial, sans-serif;
+			font-size: 1mm;
+			font-family: Arial;
+			margin-left: 0mm;
+			margin-right: 0mm;
+			}
+	        .title {
+	        padding: 0.25mm 0.25mm;
+			color: #000;
+			border-bottom: 0.2mm solid #000;
+			font-weight: bold;
+	        }
+	        .title div{margin-top:2mm;text-align: center;}
+	        .title span{font-size: 3mm}
+	        .title big{ font-size: 1mm}
+	        .img {
+	        	margin-top:1em;
+	        	text-align:center;}
+			.cuerpo{ 
+				color: #000;
+				font-weight: bold;
+			}
+			.sub{text-decoration:underline;}
+			.cuerpo div{text-align:center;text-align: center; font-size: 3mm;color:#000;} 
+			/*.cuerpo span{font-size: 3mm;color:#000;}*/
+		</style>
+
+	    <title>{{{TITLE_FILE}}}</title>
+  	</head>
+	<body>
+		<div class="img">
+			<img src="data:image/png;base64,{{{IMG_CHECK}}}" height="30" width="30" >
+		</div>
+		<div class= "content">	
+			<div class="title">
+				<div>VALIDACIÓN QR</div>
+			</div>
+			<br>
+			<div class="cuerpo">
+				<div class="sub">Fecha atención:</div>
+				<div>{{{FECHA_ATENCION}}}</div>
+				<div class="sub">Paciente:</div>
+				<div> {{{APELLIDO_NOMBRE}}}</div>
+				<div class="sub">DNI:</div> 
+				<div>{{{DNI_PERSONA}}}</div>
+				<br>
+				<div class="sub">Interviniente:</div> 
+				<div>{{{NOMBRE_INTERVINIENTE}}}</div>
+				<div class="sub">Matrícula:</div> 
+				<div>{{{MATRICULA}}}</div>
+			</div>
+		</div>
+	</body>
+</html>

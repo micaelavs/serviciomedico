@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3">
+        <label class="float-md-right control-label"><p><i>Campos requeridos(*)</i></p></label>
+    </div>
+</div>
+
+
+
+<form id="{{{FORM}}}" method='POST' action="" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6" >
+            <label for="nombre" class="control-label">Nombre<span class="text-danger">*</span></label>
+            <input name="nombre" id="nombre" class="form-control" value="{{{NOMBRE}}}">
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <label for="descripcion" class="control-label">Descripcion<span class="text-danger">*</span></label>
+            <input name="descripcion" id="descripcion" class="form-control" value="{{{DESCRIPCION}}}">
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <label for="cantidad_dias_norma" class="control-label">Cantidad de días por norma </label>
+            <input name="cantidad_dias_norma" id="cantidad_dias_norma" class="form-control" value="{{{CANTIDAD_DIAS_NORMA}}}">
+        </div>
+    </div>
+
+    <br>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <label for="periodo_norma" class="control-label">Periodo por norma </label>
+                <select class="form-control" id="periodo_norma" name="periodo_norma">
+                    <option value=""> Seleccione </option>
+                    {{{PERIODO_POR_NORMA}}}
+                    <option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+                    {{{/PERIODO_POR_NORMA}}}
+                </select>
+        </div>
+    </div>
+
+
+    <br>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 text-right">
+            <button type="submit" class="btn btn-primary" data-placement="left" name="articulos" value="{{{OPERACION}}}" id='boton_titulo' title="Guardar">GUARDAR</button>
+            <a href="{{{CANCELAR}}}" class="btn btn-default" >CANCELAR</a>
+        </div>
+    </div>
+</form>

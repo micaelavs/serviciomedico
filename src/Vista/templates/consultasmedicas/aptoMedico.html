@@ -1,0 +1,74 @@
+<style type="text/css">
+    .der {
+        text-align: right;
+    }
+    .just {
+        text-align: justify;
+    }
+    .izq {
+        text-align: left;
+    }
+    .center {
+        text-align: center;
+    }
+    .primeralinea {
+        text-align: center;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    .subt {
+        text-decoration: underline;
+    }
+    .neg {
+        font-weight: bold;
+    }
+
+    table {
+        width: 100%;
+    }
+    th, td {
+        width: 50%;
+    }
+
+</style>
+
+<body>
+    <div class="datos_contenido" id="amb_consulta">
+        <form action="{{{FORM}}}" method="POST" autocomplete="off" id="consulta">
+            <div class="col-xs-2 izq">
+                <img src="{{{IMG_PATH}}}" height="150">
+            </div>
+            <div class="primeralinea h3">
+                Certificado de Aptitud para Ingreso a la Administración Pública Nacional
+            </div>
+            <div class="der">
+                <p>CABA, {{{FECHA_SOLICITUD}}}</p>
+            </div>
+            <br>
+            <div class="izq neg">DE: Servicio médico - DGRRHH</div>
+            <div class="subt neg">A: Directora General de Recursos Humanos del MINISTERIO DE TRANSPORTE </div>
+            <br>
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="neg">Ref. Agente: {{{APELLIDO_NOMBRE}}}</td>
+                        <td class="neg">DNI: {{{DNI}}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="just">
+                <p>
+                    Se comunica que al momento de la presente el/la agente de la referencia cumple con los requisitos para que se le otorgue
+                    el APTO MÉDICO {{{TIPO_APTO}}}, para el ingreso, de acuerdo a los estudios realizados en el que obran en nuestro poder.
+                </p>
+            </div>
+           <br>
+            <br>
+            <div class="der">
+                <div> _____________________ </div>
+                <div class="der">Firma y sello&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <br>
+            </div>
+        </form>
+    </div>
+</body>

@@ -1,0 +1,405 @@
+<div class="row">
+    <div class="col-md-9">
+         <label style= "text-align: left; color:#1193D2;" class="control-label">
+            <p><i>(*) Completar el DNI y esperar la respuesta del Sistema.</i></p>
+        </label>
+        <label style= "text-align: left; color:#1193D2;" class="control-label">
+            <p><i>(*) Para guardar los datos de APTO MÉDICO debe completar los datos obligatorios de la intervención, Art. "APTO" y guardar el formulario.</i></p>
+        </label>
+    </div>
+    <div class="col-md-3">
+        <label class="float-md-right control-label">
+            <p><i>Campos requeridos(*)</i></p>
+        </label>
+    </div>
+</div>
+<br>
+<form id="{{{FORM}}}" method='POST' class="alta_consulta_medica" action="" enctype="multipart/form-data">
+    <input type="hidden" id="flag" value="{{{FLAG}}}">
+    <div class= "row">
+        <div style="display:none;" class="alert alert-danger fade in alert-dismissable" id="aviso"></div>
+    </div>
+    <div class= "row">
+        <div style="display:none;" class="alert alert-success fade in alert-dismissable" id="mensaje"></div>
+    </div>
+    <div class= "row">
+        <div style="display:none;" class="alert alert-info fade in alert-dismissable" id="alerta"></div>
+    </div>
+    <div class="row" id="errores_validar">
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="dni" class="control-label">Documento (DNI)<span class="text-danger"> *</span></label> <!-- era CUIT-->
+                <input type='text' name="dni" id="dni" class="form-control" {{{DISABLED_UPDATE}}} value="{{{DNI}}}"> <!-- CUIT-->
+                <input type="hidden" class="form-control" id="id_agente" name="id_agente" value="{{{ID_AGENTE}}}">
+                <input type="hidden" class="form-control" id="dni_agente" name="dni_agente" value="{{{DNI}}}"> <!--cuit_agente -->
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="apellido_nombre" class="control-label">Apellido y Nombre<span class="text-danger"> *</span></label>
+                <input type='text' name="apellido_nombre" id="apellido_nombre" class="form-control" {{{DISABLED_UPDATE}}} value="{{{APELLIDO_NOMBRE}}}">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="cuit" class="control-label">CUIT</label> 
+                <input type='text' name="cuit" id="cuit" class="form-control" {{{DISABLED_UPDATE}}} value="{{{CUIT}}}">
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="fecha_nacimiento" class="control-label">Fecha nacimiento</label>
+                <div class='input-group date fecha_nacimiento'>
+                    <input type='text' class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" {{{DISABLED_UPDATE}}} value="{{{FECHA_NACIMIENTO}}}">
+                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                </div>
+              </div>
+        </div>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label for="edad" class="control-label">Edad</label>
+                <span class="form-control" id="edad" disabled>{{{EDAD}}}</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="modalidad_vinculacion" class="control-label">Modalidad Vinculación</label>
+                <input  type='text' name="modalidad_vinculacion" id="modalidad_vinculacion" class="form-control" {{{DISABLED_UPDATE}}} value="{{{MODALIDAD_VINCULACION}}}">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label class="control-label" for="apto">Apto</label>
+            <select class="form-control" id="apto" name="apto">
+                <option value=""> Seleccione </option>
+                {{{APTO}}}
+                <option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+                {{{/APTO}}}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="control-label" for="tipo_apto">Tipo Apto</label>
+            <select class="form-control" id="tipo_apto" name="tipo_apto">
+                <option value=""> Seleccione </option>
+                {{{TIPO_APTO}}}
+                <option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+                {{{/TIPO_APTO}}}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="control-label" for="grupo">G. sanguíneo</label>
+            <select class="form-control" id="grupo" name="grupo">
+                <option value=""> Seleccione </option>
+                {{{GRUPO}}}
+                <option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+                {{{/GRUPO}}}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="fecha_apto" class="control-label">Fecha apto</label>
+                <div class='input-group date fecha_apto'>
+                    <input type='text' class="form-control" id="fecha_apto" name="fecha_apto" value="{{{FECHA_APTO}}}">
+                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                </div>
+            </div>
+        </div>
+        <div style = "margin-top: 1.5em; "class="col-md-2">
+            <a href="{{{BOTON_APTO}}}" {{{DISABLED}}} class="btn btn-info" id='boton_apto' title="Para imprimir debe estar Apto y debe seleccionar la Fecha de Apto">
+                <i class="fa fa-print" aria-hidden="true"></i> IMPRIMIR APTO
+            </a>
+        </div>
+    </div>
+    <br>
+    <div class='row'>
+        <div class='col-xs-12 text-left'>
+            <div id='div_agente'><i class='fa fa-wheelchair' aria-hidden='true'></i> Datos Discapacidad</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="tipo" class="control-label">Tipo</label>
+                <span class="form-control" id="tipo" disabled>{{{TIPO}}}</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="cud" class="control-label">Cud</label>
+                <span class="form-control" id="cud" disabled>{{{CUD}}}</span>
+            </div>
+        </div>
+         <div class="col-md-2">
+            <div class="form-group">
+                <label for="fecha_vencimiento" class="control-label">Fecha Vencimiento</label>
+                <span class="form-control" id="fecha_vencimiento" disabled>{{{FECHA_VENCIMIENTO}}}</span>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <label for="observacion_discapacidad" class="control-label">Observación</label>
+                <span class="form-control" id="observacion_discapacidad" disabled>{{{OBSERVACION_DISCAPACIDAD}}}</span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class='row'>
+        <div class='col-xs-12 text-left'>
+            <div id='div_agente'><i class='fa fa-home' aria-hidden='true'></i> Domicilio</div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="calle" class="control-label">Calle</label>
+                <span class="form-control" id="calle" disabled>{{{CALLE}}}</span>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label for="numero" class="control-label">Nro</label>
+                <span class="form-control" id="numero" disabled>{{{NUMERO}}}</span>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label for="piso" class="control-label">Piso</label>
+                <span class="form-control" id="piso" disabled>{{{PISO}}}</span>
+            </div>
+        </div>
+         <div class="col-md-1">
+            <div class="form-group">
+                <label for="dpto" class="control-label">Dpto</label>
+                <span class="form-control" id="dpto" disabled>{{{DPTO}}}</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="provincia" class="control-label">Provincia</label>
+                <span class="form-control" id="provincia" disabled>{{{PROVINCIA}}}</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="localidad" class="control-label">Localidad</label>
+                <span class="form-control" id="localidad" disabled>{{{LOCALIDAD}}}</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="codigo_postal" class="control-label">Código Postal</label>
+                <span class="form-control" id="codigo_postal" disabled>{{{CODIGO_POSTAL}}}</span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class='row'>
+        <div class='col-xs-12 text-left'>
+            <div id='div_agente'><i class='fa fa-phone-square' aria-hidden='true'></i> Teléfonos de contacto</div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label for="tipo_tel_1" class="control-label">Tipo</label>
+                <span class="form-control" id="tipo_tel_1" disabled>{{{TIPO_TEL_1}}}</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="numero_tel_1" class="control-label">Número</label>
+                <span class="form-control" id="numero_tel_1" disabled>{{{NUMERO_TEL_1}}}</span>
+            </div>
+        </div>
+        <div class="col-md-1">
+            <div class="form-group">
+                <label for="tipo_tel_2" class="control-label">Tipo</label>
+                <span class="form-control" id="tipo_tel_2" disabled>{{{TIPO_TEL_2}}}</span>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="numero_tel_2" class="control-label">Número</label>
+                <span class="form-control" id="numero_tel_2" disabled>{{{NUMERO_TEL_2}}}</span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class='row'>
+        <div class='col-xs-12 text-left'>
+            <div id='div_agente'><i class='fa fa-list-alt' aria-hidden='true'></i> Otros datos</div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="obra_social" class="control-label">Obra social</label>
+                <span class="form-control" id="obra_social" disabled>{{{OBRA_SOCIAL}}}</span>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class='row'>
+        <div class='col-xs-12 text-left'>
+            <div id='div_agente'><i class='fa fa-user-md' aria-hidden='true'></i> Datos intervención</div>
+        </div>
+        <div class= "row col-md-12">
+            <div style="display:none;" class="alert alert-success fade in alert-dismissable" id="mensaje2"></div>
+        </div>
+        <div class= "row col-md-12">
+            <div style="display:none;" class="alert alert-info fade in alert-dismissable" id="alerta2"></div>
+        </div>
+        <div class= "row col-md-12">
+            <div style="display:none;" class="alert alert-danger fade in alert-dismissable" id="aviso2"></div>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="fecha_intervencion" class="control-label">Fecha y Hora de intervención<span class="text-danger"> *</span></label>
+                <div class='input-group date fecha_intervencion'>
+                    <input type='text' class="form-control" id="fecha_intervencion" name="fecha_intervencion" value="{{{FECHA_INTERVENCION}}}">
+                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <label class="control-label" for="articulo">Artículo<span class="text-danger"> *</span></label>
+            <select class="form-control" id="articulo" name="articulo">
+                <option value=""> Seleccione </option>
+                {{{ARTICULO}}}
+                <option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+                {{{/ARTICULO}}}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="control-label" for="estado">Estado<span class="text-danger"> *</span></label>
+            <select class="form-control" id="estado" name="estado">
+                <option value=""> Seleccione </option>
+                {{{ESTADO}}}
+                <option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+                {{{/ESTADO}}}
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="control-label" for="interviniente">Interviniente<span class="text-danger"> *</span></label>
+            <select class="form-control" id="interviniente" name="interviniente">
+                <option value=""> Seleccione </option>
+                {{{INTERVINIENTE}}}
+                <option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+                {{{/INTERVINIENTE}}}
+            </select>
+        </div>
+    </div>
+    <div class='row'>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="fecha_desde" class="control-label">Fecha desde<span class="text-danger"> *</span></label>
+                <div class='input-group date fecha_desde'>
+                    <input type='text' class="form-control" id="fecha_desde" name="fecha_desde" value="{{{FECHA_DESDE}}}">
+                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="fecha_hasta" class="control-label">Fecha hasta<span class="text-danger"> *</span></label>
+                <div class='input-group date fecha_hasta'>
+                    <input type='text' class="form-control" id="fecha_hasta" name="fecha_hasta" value="{{{FECHA_HASTA}}}">
+                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="fecha_regreso" class="control-label">Regresa a trabajar</label>
+                <div class='input-group date fecha_regreso'>
+                    <input type='text' class="form-control" id="fecha_regreso" name="fecha_regreso" value="{{{FECHA_REGRESO}}}">
+                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label for="fecha_nueva_revision" class="control-label">Fecha nueva revisión</label>
+                <div class='input-group date fecha_nueva_revision'>
+                    <input type='text' class="form-control" id="fecha_nueva_revision" name="fecha_nueva_revision" value="{{{FECHA_NUEVA_REVISION}}}">
+                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 1.5em; "class="col-md-3">
+             <a href="{{{BOTON_COMPROBANTE}}}" {{{DISABLED}}} class="btn btn-info" id='boton_comprobante' title="Para imprimir debe completar los datos de intervención obligatorios">
+                <i class="fa fa-print" aria-hidden="true"></i> GENERAR COMPROBANTE Y ENVIAR
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="medico_tratante" class="control-label">Médico tratante</label>
+                <input type='text' name="medico_tratante" id="medico_tratante" class="form-control" value="{{{MEDICO_TRATANTE}}}">
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <label for="telefono_medico_tratante" class="control-label">Teléfono contacto</label>
+                <input type='text' name="telefono_medico_tratante" id="telefono_medico_tratante" class="form-control" value="{{{TELEFONO_MEDICO_TRATANTE}}}">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="observacion_intervencion" class="control-label">Observación</label>
+                <textarea style="height: 10em;" {{{DISABLED_ONSERVACION}}} class="form-control" id="observacion_intervencion" name="observacion_intervencion">{{{OBSERVACION_INTERVENCION}}}</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2" style="margin-top: 1.5em;">
+            <a href="{{{RESUMEN}}}" {{{DISABLED_EVENTOS}}} class="btn btn-info" id='boton_resumen_eventos'>
+            <i class="fa fa-eye" aria-hidden="true"></i> Resumen Eventos
+            </a>
+        </div>
+        <div class="col-md-2" style="margin-top: 1.5em;">
+            <a href="{{{HISTORIA_CLINICA}}}" {{{DISABLED}}} {{{DISABLED_HISTORIA_CLINICA}}} class="btn btn-info" id='boton_historia_clinica' >
+            <i class="fa fa-eye" aria-hidden="true"></i> Historia Clínica
+            </a>
+        </div>
+    </div>
+    <hr>
+    <div class="row combo-input" id="documentos_div" >
+        <div class="form-group entry" data-new-id="0">
+            <label for="documento0" class="control-label">Documento</label>
+            <div class="input-group">
+               <div class="add-file btn-docs">
+                <input class="uploads" id="documento0" type="file" name="documento[new][0][doc]" value="" data-show-preview="false" accept="application/pdf, image/jpg, image/jpeg">
+                </div>
+                <span class="input-group-btn">
+                <button title="Agregar documento" class="btn btn-info btn-add" type="button">
+                  <span class="glyphicon glyphicon-plus"></span>
+                </button>
+              </span>
+            </div>
+        </div>
+    </div>
+    <div class="row"><!-- solo en la modificacion iria -->
+        <div class="col-md-12">
+             <a target="_blank" href="{{{DOCUMENTOS_VER}}}" {{{DISABLED_HISTORIAL}}} class="btn btn-info">
+                <i class="fa fa-eye" aria-hidden="true"></i> Ver historial
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <button type="submit" class="btn btn-primary" data-placement="left" name="consultasmedicas"
+                value="{{{OPERACION}}}" id='consultasmedicas' title="Guardar">GUARDAR</button>
+            <a href="{{{CANCELAR}}}" class="btn btn-default">CANCELAR</a>
+        </div>
+    </div>
+</form>

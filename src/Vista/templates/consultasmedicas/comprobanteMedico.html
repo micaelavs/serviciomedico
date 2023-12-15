@@ -1,0 +1,63 @@
+<style type="text/css">
+    .datos_contenido {
+        padding-left: 50px;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    .izq {
+        text-align: left;
+    }
+    .der {
+        text-align: right;
+    }
+    .tabla {
+        font-size: 15px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .primeralinea {
+        text-align: center;
+        font-weight: bold;
+        text-decoration: underline;
+        text-align: center;
+    }
+/*     table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    } */
+
+
+</style>
+
+<body>
+    <div class="datos_contenido" id="amb_pedido">
+        <form action="{{{FORM}}}" method="POST" autocomplete="off" id="pedido">
+            <table class="tabla">
+                <tbody>
+                    <tr>
+                        <td><img src="{{{IMG_PATH}}}" height="130"></td>
+                        <td  colspan="2" class="neg primeralinea" >COMPROBANTE DE ATENCIÓN SERVICIO MÉDICO</td>
+                        <td></td><td></td><td>{{{FECHA_ACTUAL}}} ORIGINAL N° {{{NUMERO_CONSULTA}}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="6" class="izq">
+                        A LA SEÑORA DIRECTORA DE ADMINISTRACIÓN DE PERSONAL: El día  {{{DIA}}}  a la hora {{{HORA}}} el servicio médico ha tomado conocimiento de la condición del/la agente {{{APELLIDO_NOMBRE_AGENTE}}} DU {{{DNI}}} <br>
+                        Determinandose la siguiente condición laboral: {{{CONDICION_LABORAL}}} .<br>
+                        Licencia de {{{N_DIAS_LICENCIA}}} días s/art. {{{ARTICULO}}} Inc. desde {{{FECHA_DESDE}}}
+                        el hasta el {{{FECHA_HASTA}}} . Vuelve a trabajar el día: {{{FECHA_REINCORPORACION}}}.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div class="izq">Generó comprobante: {{{USUARIO_EMAIL}}} - {{{USUARIO_NOMBRE}}}</div>
+            <br>
+            <br>
+            <div class="der">
+                <img src="{{{FIRMA}}}" height="150">
+                <img src="data:image/png;base64,{{{QR}}} ">
+            </div>
+        </form>
+    </div>
+</body>

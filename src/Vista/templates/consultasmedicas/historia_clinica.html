@@ -1,0 +1,67 @@
+<div class='row'>
+	<div class='col-xs-12 text-right'>
+		<div id='div_agente'>
+			<i class='fa fa-puzzle-piece' aria-hidden='true'></i> 
+			DOCUMENTO (DNI): <strong>{{{DNI}}}</strong> | Nombre y Apellido: <strong>{{{APELLIDO_NOMBRE}}}</strong>
+		</div>
+	</div>
+</div>
+<div class="row" id="url-base" data_url='{{{URL_BASE}}}'>
+  <div class="col-xs-12">
+    <a role="button" data-toggle="collapse" href="#collapseFiltros" aria-expanded="false" aria-controls="collapseFiltros"
+      style="display: block;">
+      <span class="">
+        <i class="fa fa-filter"></i> Filtros
+        <i class="fa fa-caret-right fa-fw" id="collapseFiltros_caret"></i>
+      </span>
+    </a>
+    <div class="collapse" id="collapseFiltros">
+         <div class="row">
+          	<div class="col-md-3">
+	            <div class="form-group">
+	              	<label for="articulo_filtro" class="control-label">Artículo</label>
+	              	<select name="articulo_filtro" id="articulo_filtro" class="form-control">
+	                <option value="">Seleccione</option>
+	                {{{ARTICULOS}}}
+	                <option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+	                {{{/ARTICULOS}}}
+	              	</select>
+	            </div>
+          	</div>
+          	<div class="col-md-3">
+	            <div class="form-group">
+	              	<label for="estado_filtro" class="control-label">Estado</label>
+	              	<select name="estado_filtro" id="estado_filtro" class="form-control">
+	                <option value="">Seleccione</option>
+	                {{{ESTADOS}}}
+	                <option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+	                {{{/ESTADOS}}}
+	              </select>
+	            </div>
+          	</div>
+          	<div class="col-md-3">
+	            <div class="form-group">
+	              	<label for="articulo_filtro" class="control-label">Interviniente</label>
+	              	<select name="interviniente_filtro" id="interviniente_filtro" class="form-control">
+	                <option value="">Seleccione</option>
+	                {{{INTERVINIENTES}}}
+	                <option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+	                {{{/INTERVINIENTES}}}
+	              	</select>
+	            </div>
+          	</div>
+        </div>
+    </div>
+  </div>
+</div>
+<hr>
+<table id="tabla" class="table table-striped dataTables dataTable no-footer dtr-inline historia_clinica"></table>
+<div class="row">
+    <div class="col-md-6 exportador">   
+        <button class="btn btn-default accion_exportador" value="{{{BOTON_EXCEL}}}"><span class="fa fa-file-text-o"></span> EXCEL</button> 
+    </div>
+    <div class="col-xs-12 text-center">
+		<button onclick="history.back();" class="btn btn-primary">Volver <i class="fa fa-reply"></i>
+		</button>
+	</div>
+</div>

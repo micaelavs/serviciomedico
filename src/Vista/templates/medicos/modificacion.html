@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-9"></div>
+    <div class="col-md-3">
+        <label class="float-md-right control-label">
+            <p><i>Campos requeridos(*)</i></p>
+        </label>
+    </div>
+</div>
+
+
+
+<form id="{{{FORM}}}" method='POST' action="" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <label for="matricula" class="control-label">Matricula<span class="text-danger">*</span></label>
+            <input name="matricula" id="matricula" class="form-control" value="{{{MATRICULA}}}">
+        </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <label for="nombre" class="control-label">Nombre<span class="text-danger">*</span></label>
+            <input name="nombre" id="nombre" class="form-control" value="{{{NOMBRE}}}">
+        </div>
+    </div>
+    <br>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <label for="apellido" class="control-label">Apellido<span class="text-danger">*</span></label>
+            <input name="apellido" id="apellido" class="form-control" value="{{{APELLIDO}}}">
+        </div>
+    </div>
+    <br>
+    <div style="margin-left: -8px;"  class="col-md-3"></div>
+    <div class="row combo-input">
+        <div class="col-md-6">
+            <label for="archivo" class="control-label">Adjuntar firma</label>
+            <br>
+            <input class="adjunto form-control" type="file" name="archivo" data-show-preview="false" accept="image/jpg">
+            <span class="control-label">Archivo cargado: <strong>{{{ARCHIVO}}}</strong></label></label></span>
+        </div>
+    </div>
+    <div class="col-md-6"></div>
+    <br>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 text-right">
+            <button type="submit" class="btn btn-primary" data-placement="left" name="medicos"
+                value="{{{OPERACION}}}" id='boton_titulo' title="Guardar">GUARDAR</button>
+            <a href="{{{CANCELAR}}}" class="btn btn-default">CANCELAR</a>
+        </div>
+    </div>
+</form>

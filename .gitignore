@@ -1,0 +1,8 @@
+/vendor
+/config
+/uploads
+access.log
+error.log
+version
+composer.lock
+.idea

@@ -1,0 +1,45 @@
+<div class="row" id="url-base" data_url='{{{URL_BASE}}}'>
+  <div class="col-xs-12">
+    <a role="button" data-toggle="collapse" href="#collapseFiltros" aria-expanded="false" aria-controls="collapseFiltros"
+      style="display: block;">
+      <span class="">
+        <i class="fa fa-filter"></i> Filtros
+        <i class="fa fa-caret-right fa-fw" id="collapseFiltros_caret"></i>
+      </span>
+    </a>
+    <div class="collapse" id="collapseFiltros">
+         <div class="row">
+          	<div class="col-md-3">
+	            <div class="form-group">
+	              	<label for="dni_filtro" class="control-label">DNI</label>
+	              	<select name="dni_filtro" id="dni_filtro" class="form-control">
+		                <option value="">Seleccione</option>
+		                {{{DNI}}}
+		                	<option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+		                {{{/DNI}}}
+	              	</select>
+	            </div>
+          	</div>
+          	<div class="col-md-3">
+	            <div class="form-group">
+	              	<label for="usuario_filtro" class="control-label">Usuario</label>
+	              	<select name="usuario_filtro" id="usuario_filtro" class="form-control">
+	                <option value="">Seleccione</option>
+	                {{{USUARIOS}}}
+	                <option value="{{{VALUE}}}" {{{SELECTED}}}{{{BORRADO}}}>{{{TEXT}}}</option>
+	                {{{/USUARIOS}}}
+	              </select>
+	            </div>
+          	</div>
+        </div>
+    </div>
+  </div>
+</div>
+<hr>
+<table id="tabla" class="table table-striped dataTables dataTable no-footer dtr-inline log_listado"></table>
+<div class="row">
+    <div class="col-md-6 exportador">   
+        <button class="btn btn-default accion_exportador" value="{{{BOTON_EXCEL}}}"><span class="fa fa-file-text-o"></span> EXCEL</button> 
+    </div>
+
+</div>

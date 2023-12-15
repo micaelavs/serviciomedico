@@ -1,0 +1,19 @@
+.columna{
+	background:#1193D2;
+	
+}
+
+.coleft{
+	border-left:1px solid #CECECE;
+	
+}
+
+.colright{
+	border-right:1px solid #CECECE; text-align: center;
+	
+}
+
+.titulo{
+	font-weight: 700;font-size: 16px;color: #FFF;
+	
+}

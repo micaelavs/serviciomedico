@@ -1,0 +1,21 @@
+<div class='row'>
+	<div class='col-xs-12 text-right'>
+		<div id='div_agente'>
+			<i class='fa fa-puzzle-piece' aria-hidden='true'></i> 
+			DOCUMENTO (DNI): <strong>{{{DNI}}}</strong> | Nombre y Apellido: <strong>{{{APELLIDO_NOMBRE}}}</strong>
+		</div>
+	</div>
+</div>
+<div class="row" id="url-base" data_url='{{{URL_BASE}}}'>
+</div>
+<hr>
+<table id="tabla" class="table table-striped dataTables dataTable no-footer dtr-inline eventos"></table>
+<div class="row">
+    <div class="col-md-6 exportador">   
+        <button class="btn btn-default accion_exportador" value="{{{BOTON_EXCEL}}}"><span class="fa fa-file-text-o"></span> EXCEL</button> 
+    </div>
+   	<div class="col-xs-12 text-center">
+		<button onclick="history.back();" class="btn btn-primary">Volver <i class="fa fa-reply"></i>
+		</button>
+	</div>
+</div>
